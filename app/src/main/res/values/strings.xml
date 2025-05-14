@@ -1,4 +1,18 @@
 <resources>
-    <string name="app_name">AquaNinjaNew</string>
-    <string name="default_web_client_id">YOUR_CLIENT_ID_HERE</string>
+    <string name="app_name" translatable="false">AquaNinjaNew</string>
+    <string name="default_web_client_id">your-client-id.apps.googleusercontent.com</string>
+    <string name="greeting">Good Morning,</string>
+    <string name="user_name">Jeonghan</string>
+    <string name="go_to_dashboard">Go To Dashboard</string>
+    <string name="water_intake">200ml water (2 Glass)</string>
+    <string name="time_1100">11:00 AM</string>
+    <string name="add_goal">Add Your Goal</string>
+
+    <!-- Content Descriptions -->
+    <string name="water_image_desc">Water tracking illustration</string>
+    <string name="analysis_icon">Analysis</string>
+    <string name="home_icon">Home</string>
+    <string name="profile_icon">Profile</string>
+
+
 </resources>

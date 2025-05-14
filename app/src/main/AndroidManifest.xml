@@ -12,21 +12,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AquaNinjaNew"
         tools:targetApi="31">
-
-        <!-- Biar SignupActivity langsung terbuka pertama kali -->
+        <activity
+            android:name=".model.User"
+            android:exported="false" />
         <activity
             android:name=".SignupActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".Home" android:exported="false" />
-        <activity android:name=".Login" android:exported="false" />
-        <activity android:name=".MainActivity" android:exported="false" />
-
+        <activity
+            android:name=".Home"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

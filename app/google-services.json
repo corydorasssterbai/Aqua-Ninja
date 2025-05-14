@@ -12,7 +12,20 @@
           "package_name": "com.kania.aquaninjanew"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "464272605545-onnac619e3iucg7p32cugco55ljis285.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kania.aquaninjanew",
+            "certificate_hash": "6d92f0b27ed1e163e16250685e64067a7ef89694"
+          }
+        },
+        {
+          "client_id": "464272605545-6p32ams7ppvpokgpdil8d0vu8og8bips.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCsgrImYJm8K16qLRycdCyFSSWZQygtNXI"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "464272605545-6p32ams7ppvpokgpdil8d0vu8og8bips.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

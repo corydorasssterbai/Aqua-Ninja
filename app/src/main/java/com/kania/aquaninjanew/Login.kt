@@ -17,9 +17,17 @@ class Login : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // ✅ Cek apakah user sudah login dan emailnya sudah diverifikasi
+        auth = FirebaseAuth.getInstance()
+        val currentUser = auth.currentUser
+        if (currentUser != null && currentUser.isEmailVerified) {
+            startActivity(Intent(this, Home::class.java))
+            finish()
+        }
+
         setContentView(R.layout.activity_login2)
 
         // Inisialisasi Firebase Auth
@@ -37,22 +45,27 @@ class Login : AppCompatActivity() {
         val passwordEditText = findViewById<EditText>(R.id.password)
         val loginButton = findViewById<Button>(R.id.button)
         val googleButton = findViewById<Button>(R.id.google_button)
-        val rememberMeCheckBox = findViewById<CheckBox>(R.id.remember_me)
         val signUpText = findViewById<TextView>(R.id.sign_up)
         val forgotPasswordText = findViewById<TextView>(R.id.forgot_password)
 
         // Login dengan Email & Password
         loginButton.setOnClickListener {
-            val email = emailEditText.text.toString()
-            val password = passwordEditText.text.toString()
+            val email = emailEditText.text.toString().trim()
+            val password = passwordEditText.text.toString().trim()
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            Toast.makeText(this, "Login berhasil!", Toast.LENGTH_SHORT).show()
-                            startActivity(Intent(this, Home::class.java))
-                            finish()
+                            val user = auth.currentUser
+                            if (user != null && user.isEmailVerified) {
+                                Toast.makeText(this, "Login berhasil!", Toast.LENGTH_SHORT).show()
+                                startActivity(Intent(this, Home::class.java))
+                                finish()
+                            } else {
+                                Toast.makeText(this, "Email belum diverifikasi! Cek email kamu.", Toast.LENGTH_LONG).show()
+                                auth.signOut() // Logout otomatis kalau belum verifikasi
+                            }
                         } else {
                             Toast.makeText(this, "Login gagal: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                         }
@@ -60,16 +73,13 @@ class Login : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Email dan password tidak boleh kosong!", Toast.LENGTH_SHORT).show()
             }
-
         }
 
-        // Login dengan Google
+        // Login dengan Google (Tidak perlu verifikasi email karena Google otomatis verifikasi)
         googleButton.setOnClickListener {
             val signInIntent = googleSignInClient.signInIntent
             startActivityForResult(signInIntent, RC_SIGN_IN)
-
         }
-
 
         // Tombol Sign Up (Ganti ke SignUpActivity)
         signUpText.setOnClickListener {
@@ -109,9 +119,7 @@ class Login : AppCompatActivity() {
                     Toast.makeText(this, "Google Sign-In gagal: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
-
     }
-
 
     companion object {
         private const val RC_SIGN_IN = 9001

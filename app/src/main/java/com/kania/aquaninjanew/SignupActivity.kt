@@ -26,7 +26,14 @@ class SignupActivity : AppCompatActivity() {
         val createAccountButton = findViewById<Button>(R.id.create_account)
         val loginText = findViewById<TextView>(R.id.login)
 
-        // Fungsi Daftar
+        // Jika user sudah login dan sudah verifikasi, langsung masuk ke Home
+        val currentUser = auth.currentUser
+        if (currentUser != null && currentUser.isEmailVerified) {
+            startActivity(Intent(this, Home::class.java))
+            finish()
+        }
+
+        // Tombol Daftar
         createAccountButton.setOnClickListener {
             val emailText = email.text.toString().trim()
             val passwordText = password.text.toString().trim()
@@ -39,9 +46,18 @@ class SignupActivity : AppCompatActivity() {
             auth.createUserWithEmailAndPassword(emailText, passwordText)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        Toast.makeText(this, "Akun berhasil dibuat!", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, Login::class.java))
-                        finish()
+                        val user = auth.currentUser
+                        user?.sendEmailVerification()
+                            ?.addOnCompleteListener { verifyTask ->
+                                if (verifyTask.isSuccessful) {
+                                    Toast.makeText(this, "Akun dibuat! Cek email untuk verifikasi.", Toast.LENGTH_LONG).show()
+                                    auth.signOut()
+                                    startActivity(Intent(this, Login::class.java))
+                                    finish()
+                                } else {
+                                    Toast.makeText(this, "Gagal mengirim email verifikasi: ${verifyTask.exception?.message}", Toast.LENGTH_SHORT).show()
+                                }
+                            }
                     } else {
                         Toast.makeText(this, "Gagal: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                     }
