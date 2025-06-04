@@ -13,7 +13,7 @@ class ReminderWater : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_reminderwater)
 
         val startEditText = findViewById<EditText>(R.id.startwater)
         val finishEditText = findViewById<EditText>(R.id.finishwater)
