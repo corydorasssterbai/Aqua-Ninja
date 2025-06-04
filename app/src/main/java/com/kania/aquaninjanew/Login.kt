@@ -20,7 +20,6 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // ✅ Cek apakah user sudah login dan emailnya sudah diverifikasi
         auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
         if (currentUser != null && currentUser.isEmailVerified) {
@@ -30,25 +29,22 @@ class Login : AppCompatActivity() {
 
         setContentView(R.layout.activity_login2)
 
-        // Inisialisasi Firebase Auth
         auth = FirebaseAuth.getInstance()
 
-        // Konfigurasi Google Sign-In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        // Ambil komponen dari layout
         val emailEditText = findViewById<EditText>(R.id.email)
         val passwordEditText = findViewById<EditText>(R.id.password)
         val loginButton = findViewById<Button>(R.id.button)
         val googleButton = findViewById<Button>(R.id.google_button)
         val signUpText = findViewById<TextView>(R.id.sign_up)
         val forgotPasswordText = findViewById<TextView>(R.id.forgot_password)
+        val resendButton = findViewById<Button>(R.id.resend_verification) // Tambahkan tombol ini di XML
 
-        // Login dengan Email & Password
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString().trim()
             val password = passwordEditText.text.toString().trim()
@@ -63,8 +59,8 @@ class Login : AppCompatActivity() {
                                 startActivity(Intent(this, Home::class.java))
                                 finish()
                             } else {
-                                Toast.makeText(this, "Email belum diverifikasi! Cek email kamu.", Toast.LENGTH_LONG).show()
-                                auth.signOut() // Logout otomatis kalau belum verifikasi
+                                Toast.makeText(this, "Email belum diverifikasi!", Toast.LENGTH_LONG).show()
+                                auth.signOut()
                             }
                         } else {
                             Toast.makeText(this, "Login gagal: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
@@ -75,20 +71,27 @@ class Login : AppCompatActivity() {
             }
         }
 
-        // Login dengan Google (Tidak perlu verifikasi email karena Google otomatis verifikasi)
         googleButton.setOnClickListener {
             val signInIntent = googleSignInClient.signInIntent
             startActivityForResult(signInIntent, RC_SIGN_IN)
         }
 
-        // Tombol Sign Up (Ganti ke SignUpActivity)
         signUpText.setOnClickListener {
             startActivity(Intent(this, SignupActivity::class.java))
         }
 
-        // Tombol Forgot Password
         forgotPasswordText.setOnClickListener {
             startActivity(Intent(this, SignupActivity::class.java))
+        }
+
+        // ✅ Tombol untuk kirim ulang verifikasi
+        resendButton.setOnClickListener {
+            val user = auth.currentUser
+            user?.sendEmailVerification()?.addOnSuccessListener {
+                Toast.makeText(this, "Email verifikasi dikirim ulang!", Toast.LENGTH_SHORT).show()
+            }?.addOnFailureListener {
+                Toast.makeText(this, "Gagal kirim ulang: ${it.message}", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

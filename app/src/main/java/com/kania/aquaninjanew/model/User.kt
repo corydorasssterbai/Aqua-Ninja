@@ -8,10 +8,11 @@ import androidx.core.view.WindowInsetsCompat
 import com.kania.aquaninjanew.R
 
 data class User(
-    var id: String = "",
-    var firstName: String = "",
-    var lastName: String = "",
-    var email: String = "",
-    var gender: String = "",
-    var age: Int = 0
+    val firstName: String = "",
+    val lastName: String = "",
+    val email: String = "",
+    val gender: String = "",
+    val age: Int = 0,
+    val gambar: String = "",
+    val imageUrl: String = ""
 )

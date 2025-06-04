@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter Image URL"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp" />
+
+    <EditText
+        android:id="@+id/etNewImageUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="https://..."
+        android:inputType="textUri"
+        android:layout_marginBottom="16dp" />
+
+    <ImageView
+        android:id="@+id/ivPreviewImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_avatar_placeholder"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/btnApplyImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Use This Image"
+        android:backgroundTint="#7B61FF"
+        android:textColor="#FFFFFF"/>
+</LinearLayout>

@@ -1,15 +1,24 @@
 package com.kania.aquaninjanew
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class Home : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_home)
+
+        val navProfile = findViewById<ImageView>(R.id.nav_profile_top)
+        navProfile.setOnClickListener {
+            val intent = Intent(this, UserActivity::class.java)
+            startActivity(intent)
+        }
+        val navAlarm = findViewById<ImageView>(R.id.nav_alarm)
+        navAlarm.setOnClickListener {
+            val intent = Intent(this, ReminderActivity::class.java)
+            startActivity(intent)
         }
     }
+}
