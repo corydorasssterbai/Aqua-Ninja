@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9F9F9">
+
+    <!-- Back Arrow -->
+
+    <!-- Title -->
+
+    <!-- Ilustrasi gelas air -->
+
+    <!-- Teks level air -->
+
+    <!-- Date Section -->
+    <View
+        android:id="@+id/waterGlassPlaceholder"
+        android:layout_width="120dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="228dp"
+        android:background="#BBDEFB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.68"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backArrow" />
+
+    <TextView
+        android:id="@+id/backArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="348dp"
+        android:padding="16dp"
+        android:text="←"
+        android:textColor="#000"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Drink Water Glass"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/backArrow"
+        app:layout_constraintStart_toEndOf="@id/backArrow"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.932" />
+
+    <TextView
+        android:id="@+id/dateLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="168dp"
+        android:background="#03A9F4"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="Date & Time"
+        android:textColor="#FFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/waterGlassPlaceholder" />
+
+    <TextView
+        android:id="@+id/dateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="304dp"
+        android:text="16 June 2023"
+        android:textColor="#000"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.659"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dateLabel" />
+
+    <TextView
+        android:id="@+id/goalPreviewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="328dp"
+        android:text="Goal Preview"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintMarginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dateText" />
+
+    <TextView
+        android:id="@+id/progressCircle"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="324dp"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:gravity="center"
+        android:text="67%"
+        android:textColor="#03A9F4"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/goalPreviewTitle" />
+
+    <TextView
+        android:id="@+id/athletePerformance"
+        android:layout_width="236dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="348dp"
+        android:background="#FCE4EC"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="Athlete Performance\n-60%"
+        android:textColor="#D81B60"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/progressCircle"
+        app:layout_constraintTop_toTopOf="@id/progressCircle" />
+
+    <TextView
+        android:id="@+id/cognitivePerformance"
+        android:layout_width="232dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="296dp"
+        android:background="#E3F2FD"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="Cognitive Performance\n-50%"
+        android:textColor="#1976D2"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/progressCircle"
+        app:layout_constraintTop_toBottomOf="@id/athletePerformance" />
+
+    <Button
+        android:id="@+id/goalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="288dp"
+        android:backgroundTint="#03A9F4"
+        android:text="Goal Not Archive"
+        android:textColor="#FFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.71"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cognitivePerformance" />
+
+    <TextView
+        android:id="@+id/glassLevelText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="348dp"
+        android:layout_marginEnd="56dp"
+        android:text="6 Glass Water"
+        android:textColor="#000"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@id/waterGlassPlaceholder"
+        app:layout_constraintTop_toTopOf="@id/waterGlassPlaceholder" />
+
+    <!-- Goal Preview -->
+
+    <!-- Progress Circle (simulasi dengan TextView dan background drawable bulat) -->
+
+    <!-- Kinerja Atlet -->
+
+    <!-- Kinerja Otak -->
+
+    <!-- Button -->
+</androidx.constraintlayout.widget.ConstraintLayout>
