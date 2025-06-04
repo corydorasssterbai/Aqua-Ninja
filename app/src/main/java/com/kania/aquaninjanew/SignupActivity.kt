@@ -2,10 +2,7 @@ package com.kania.aquaninjanew
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 
@@ -26,14 +23,13 @@ class SignupActivity : AppCompatActivity() {
         val createAccountButton = findViewById<Button>(R.id.create_account)
         val loginText = findViewById<TextView>(R.id.login)
 
-        // Jika user sudah login dan sudah verifikasi, langsung masuk ke Home
+        // Jika user sudah login & sudah verifikasi → langsung ke Home
         val currentUser = auth.currentUser
         if (currentUser != null && currentUser.isEmailVerified) {
             startActivity(Intent(this, Home::class.java))
             finish()
         }
 
-        // Tombol Daftar
         createAccountButton.setOnClickListener {
             val emailText = email.text.toString().trim()
             val passwordText = password.text.toString().trim()
@@ -50,21 +46,32 @@ class SignupActivity : AppCompatActivity() {
                         user?.sendEmailVerification()
                             ?.addOnCompleteListener { verifyTask ->
                                 if (verifyTask.isSuccessful) {
-                                    Toast.makeText(this, "Akun dibuat! Cek email untuk verifikasi.", Toast.LENGTH_LONG).show()
+                                    Toast.makeText(
+                                        this,
+                                        "Akun berhasil dibuat! Silakan verifikasi lewat email.",
+                                        Toast.LENGTH_LONG
+                                    ).show()
                                     auth.signOut()
                                     startActivity(Intent(this, Login::class.java))
                                     finish()
                                 } else {
-                                    Toast.makeText(this, "Gagal mengirim email verifikasi: ${verifyTask.exception?.message}", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(
+                                        this,
+                                        "Gagal kirim verifikasi: ${verifyTask.exception?.message}",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
                                 }
                             }
                     } else {
-                        Toast.makeText(this, "Gagal: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            "Gagal daftar: ${task.exception?.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
         }
 
-        // Pindah ke Login
         loginText.setOnClickListener {
             startActivity(Intent(this, Login::class.java))
             finish()
