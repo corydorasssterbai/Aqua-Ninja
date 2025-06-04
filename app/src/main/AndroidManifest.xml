@@ -16,12 +16,6 @@
             android:name=".AfterReminder"
             android:exported="false" />
         <activity
-            android:name=".AddReminderActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ReminderActivity"
-            android:exported="false" />
-        <activity
             android:name=".ChangeProfileImageActivity"
             android:exported="false" />
         <activity
@@ -36,9 +30,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Home"
-            android:exported="false" />
         <activity
             android:name=".Login"
             android:exported="false" />

@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9F9F9">
+    android:background="#F9F9F9"
+    tools:context=".AfterReminder">
 
     <!-- Back Arrow -->
     <TextView
@@ -24,7 +25,7 @@
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Drink Water Glass"
+        android:text="@string/title_drink_water"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="#000"
@@ -45,33 +46,32 @@
         android:layout_marginTop="24dp"/>
 
     <!-- Teks level air -->
-
-    <!-- Date Section -->
     <TextView
         android:id="@+id/glassLevelText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="6 Glass Water"
+        android:text="@string/glass_level"
         android:textColor="#000"
         android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@id/waterGlassPlaceholder"
-        app:layout_constraintTop_toTopOf="@id/waterGlassPlaceholder" />
+        app:layout_constraintTop_toTopOf="@id/waterGlassPlaceholder"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"/>
 
+    <!-- Date Section -->
     <TextView
         android:id="@+id/dateLabel"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date & Time"
-        android:gravity="center"
-        android:textColor="#FFF"
+        android:layout_marginTop="24dp"
         android:background="#03A9F4"
+        android:gravity="center"
         android:padding="12dp"
+        android:text="Date and Time"
+        android:textColor="#FFF"
         app:layout_constraintTop_toBottomOf="@id/waterGlassPlaceholder"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/dateText"
@@ -80,10 +80,10 @@
         android:text="16 June 2023"
         android:textSize="14sp"
         android:textColor="#000"
+        android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@id/dateLabel"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Goal Preview -->
     <TextView
@@ -94,12 +94,12 @@
         android:textStyle="bold"
         android:textSize="16sp"
         android:textColor="#000"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintTop_toBottomOf="@id/dateText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintMarginTop="24dp"
-        android:layout_marginStart="16dp"/>
+        app:layout_constraintStart_toStartOf="parent"/>
 
-    <!-- Progress Circle (simulasi dengan TextView dan background drawable bulat) -->
+    <!-- Progress Circle -->
     <TextView
         android:id="@+id/progressCircle"
         android:layout_width="100dp"
@@ -109,32 +109,32 @@
         android:textSize="20sp"
         android:textColor="#03A9F4"
         android:background="@android:drawable/dialog_holo_light_frame"
-        app:layout_constraintTop_toBottomOf="@id/goalPreviewTitle"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"/>
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@id/goalPreviewTitle"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Kinerja Atlet -->
     <TextView
         android:id="@+id/athletePerformance"
-        android:layout_width="236dp"
-        android:layout_height="51dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:background="#FCE4EC"
         android:gravity="center"
         android:padding="12dp"
-        android:text="Athlete Performance\n-60%"
+        android:text="@string/athlete_performance"
         android:textColor="#D81B60"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/progressCircle"
         app:layout_constraintStart_toEndOf="@id/progressCircle"
-        app:layout_constraintTop_toTopOf="@id/progressCircle" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Kinerja Otak -->
     <TextView
         android:id="@+id/cognitivePerformance"
-        android:layout_width="232dp"
-        android:layout_height="59dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:background="#E3F2FD"
@@ -143,9 +143,9 @@
         android:text="Cognitive Performance\n-50%"
         android:textColor="#1976D2"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/athletePerformance"
         app:layout_constraintStart_toEndOf="@id/progressCircle"
-        app:layout_constraintTop_toBottomOf="@id/athletePerformance" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Button -->
     <Button
@@ -156,8 +156,8 @@
         android:backgroundTint="#03A9F4"
         android:text="Goal Not Archive"
         android:textColor="#FFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintTop_toBottomOf="@id/cognitivePerformance"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cognitivePerformance" />
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
