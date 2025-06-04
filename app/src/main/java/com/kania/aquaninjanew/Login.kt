@@ -23,7 +23,7 @@ class Login : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
         if (currentUser != null && currentUser.isEmailVerified) {
-            startActivity(Intent(this, Home::class.java))
+            startActivity(Intent(this, ReminderWater::class.java))
             finish()
         }
 
@@ -56,7 +56,7 @@ class Login : AppCompatActivity() {
                             val user = auth.currentUser
                             if (user != null && user.isEmailVerified) {
                                 Toast.makeText(this, "Login berhasil!", Toast.LENGTH_SHORT).show()
-                                startActivity(Intent(this, Home::class.java))
+                                startActivity(Intent(this, ReminderWater::class.java))
                                 finish()
                             } else {
                                 Toast.makeText(this, "Email belum diverifikasi!", Toast.LENGTH_LONG).show()
@@ -116,7 +116,7 @@ class Login : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Login dengan Google berhasil!", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, Home::class.java))
+                    startActivity(Intent(this, ReminderWater::class.java))
                     finish()
                 } else {
                     Toast.makeText(this, "Google Sign-In gagal: ${task.exception?.message}", Toast.LENGTH_SHORT).show()

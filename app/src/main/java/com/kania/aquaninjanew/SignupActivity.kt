@@ -26,7 +26,7 @@ class SignupActivity : AppCompatActivity() {
         // Jika user sudah login & sudah verifikasi → langsung ke Home
         val currentUser = auth.currentUser
         if (currentUser != null && currentUser.isEmailVerified) {
-            startActivity(Intent(this, Home::class.java))
+            startActivity(Intent(this, ReminderWater::class.java))
             finish()
         }
 
