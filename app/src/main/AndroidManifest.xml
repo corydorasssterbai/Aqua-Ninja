@@ -13,7 +13,11 @@
         android:theme="@style/Theme.AquaNinjaNew"
         tools:targetApi="31">
         <activity
+<<<<<<< HEAD
             android:name=".ReminderActivity"
+=======
+            android:name=".AfterReminder"
+>>>>>>> 602459b90ffa0a1edfb2708ec7ff81059dabe968
             android:exported="false" />
         <activity
             android:name=".Home"

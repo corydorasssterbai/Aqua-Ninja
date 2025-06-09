@@ -13,6 +13,7 @@
     <string name="analysis_icon">Analysis</string>
     <string name="home_icon">Home</string>
     <string name="profile_icon">Profile</string>
-
-
+    <string name="athlete_performance">Athlete Performance</string>
+    <string name="title_drink_water">Drink Water Glass</string>
+    <string name="glass_level">6 Glass Water</string>
 </resources>
