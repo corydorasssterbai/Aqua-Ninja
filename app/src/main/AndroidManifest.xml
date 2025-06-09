@@ -16,14 +16,9 @@
             android:name=".ReminderActivity"
             android:exported="false" />
         <activity
-            android:name=".ChangeProfileImageActivity"
-            android:exported="false" />
-        <activity
             android:name=".Home"
             android:exported="false" />
-        <activity
-            android:name=".UserActivity"
-            android:exported="false" />
+
         <activity
             android:name=".SignupActivity"
             android:exported="true">
