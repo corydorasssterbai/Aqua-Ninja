@@ -13,10 +13,13 @@
         android:theme="@style/Theme.AquaNinjaNew"
         tools:targetApi="31">
         <activity
-            android:name=".AfterReminder"
+            android:name=".ReminderActivity"
             android:exported="false" />
         <activity
             android:name=".ChangeProfileImageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Home"
             android:exported="false" />
         <activity
             android:name=".UserActivity"
